@@ -10,7 +10,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
-
+import MovieListPage from "./pages/movieListPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +29,10 @@ const App = () => {
         <SiteHeader />
         <MoviesContextProvider>
           <Routes>
+            <Route path="/movies/now-playing" element={<MovieListPage category="now_playing" title="Now Playing" />} />
+            <Route path="/movies/popular" element={<MovieListPage category="popular" title="Popular" />} />
+            <Route path="/movies/top-rated" element={<MovieListPage category="top_rated" title="Top Rated" />} />
+            <Route path="/movies/trending" element={<MovieListPage category="trending" title="Trending This Week" />} />
             <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
             <Route path="/movies/upcoming" element={<UpcomingPage />} />
             <Route path="/reviews/:id" element={<MovieReviewPage />} />
