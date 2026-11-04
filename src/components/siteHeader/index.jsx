@@ -31,6 +31,7 @@ const menuOptions = [
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Favorites", path: "/movies/favorites" },
   { label: "Watchlist", path: "/movies/watchlist" },
+  { label: "Search", path: "/movies/search" },
   ];
 
 
