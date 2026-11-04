@@ -23,11 +23,14 @@ const SiteHeader = () => {
   
   const navigate = useNavigate();
 
-  const menuOptions = [
+const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favorites" },
+    { label: "Popular", path: "/movies/popular" },
+    { label: "Top Rated", path: "/movies/top-rated" },
+    { label: "Now Playing", path: "/movies/now-playing" },
+    { label: "Trending", path: "/movies/trending" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Option 4", path: "/" },
+    { label: "Favorites", path: "/movies/favorites" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -45,9 +48,6 @@ const SiteHeader = () => {
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
-          </Typography>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
           </Typography>
             {isMobile ? (
               <>
