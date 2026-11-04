@@ -27,7 +27,6 @@ const menuOptions = [
     { label: "Home", path: "/" },
     { label: "Popular", path: "/movies/popular" },
     { label: "Top Rated", path: "/movies/top-rated" },
-    { label: "Now Playing", path: "/movies/now-playing" },
     { label: "Trending", path: "/movies/trending" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Favorites", path: "/movies/favorites" },
