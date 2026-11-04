@@ -23,7 +23,6 @@ const MovieListPage = ({ category, title }) => {
     placeholderData: keepPreviousData,
   });
 
-  // hooks must run before any early return
   const movies = useMemo(() => {
     const list = [...(data?.results ?? [])];
     if (sort) list.sort(sorters[sort]);
@@ -58,7 +57,7 @@ const MovieListPage = ({ category, title }) => {
 
       <Box sx={{ display: "flex", justifyContent: "center", pb: 4 }}>
         <Pagination
-          count={Math.min(data.total_pages, 500)} // TMDB caps at 500 pages
+          count={Math.min(data.total_pages, 500)}
           page={page}
           onChange={(_, p) => {
             setPage(p);
