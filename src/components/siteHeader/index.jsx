@@ -30,7 +30,9 @@ const menuOptions = [
     { label: "Trending", path: "/movies/trending" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Favorites", path: "/movies/favorites" },
+  { label: "Watchlist", path: "/movies/watchlist" },
   ];
+
 
   const handleMenuSelect = (pageURL) => {
     setAnchorEl(null);
