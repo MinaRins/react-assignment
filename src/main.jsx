@@ -14,6 +14,9 @@ import MovieListPage from "./pages/movieListPage";
 import PersonPage from "./pages/personPage";
 import WatchlistPage from "./pages/watchlistPage";
 import SearchPage from "./pages/searchPage";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import theme from "./theme";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -55,4 +58,10 @@ const App = () => {
 };
 
 const rootElement = createRoot(document.getElementById("root"));
-rootElement.render(<App />);
+
+rootElement.render(
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <App />
+  </ThemeProvider>
+); 

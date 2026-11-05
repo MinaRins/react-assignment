@@ -1,5 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
-import Spinner from '../spinner';
+
+import { useQuery } from "@tanstack/react-query";
+import Spinner from "../spinner";
 import { getGenres } from "../../api/tmdb-api";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,19 +12,18 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
+import img from "../../images/pexels-dziana-hasanbekava-5480827.jpg";
 
-const formControl = 
-  {
-    margin: 1,
-    minWidth: "90%",
-    backgroundColor: "rgb(255, 255, 255)"
-  };
+const formControl = {
+  margin: 1,
+  minWidth: "90%",
+  backgroundColor: "#FFFFFF",
+  borderRadius: "12px",
+};
 
 export default function FilterMoviesCard(props) {
-
   const { data, error, isPending, isError } = useQuery({
-    queryKey: ['genres'],
+    queryKey: ["genres"],
     queryFn: getGenres,
   });
 
@@ -34,17 +34,19 @@ export default function FilterMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+
   const genres = data.genres;
-  if (genres[0].name !== "All"){
+
+  if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
   }
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value); 
+    props.onUserInput(type, value);
   };
 
-  const handleTextChange = (e, props) => {
+  const handleTextChange = (e) => {
     handleChange(e, "name", e.target.value);
   };
 
@@ -53,18 +55,27 @@ export default function FilterMoviesCard(props) {
   };
 
   return (
-    <Card 
+    <Card
       sx={{
-        backgroundColor: "rgb(204, 204, 0)"
-      }} 
-      variant="outlined">
+        backgroundColor: "#FCE4EC",
+        border: "1px solid #F5D3E0",
+        borderRadius: "20px",
+        boxShadow: "0 4px 15px rgba(190, 140, 165, 0.12)",
+        color: "#594653",
+      }}
+      variant="outlined"
+    >
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
+          <SearchIcon
+            fontSize="large"
+            sx={{ color: "#D98EAA" }}
+          />
           Filter the movies.
         </Typography>
+
         <TextField
-          sx={{...formControl}}
+          sx={{ ...formControl }}
           id="filled-search"
           label="Search field"
           type="search"
@@ -72,35 +83,37 @@ export default function FilterMoviesCard(props) {
           value={props.titleFilter}
           onChange={handleTextChange}
         />
-        <FormControl sx={{...formControl}}>
+
+        <FormControl sx={{ ...formControl }}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
             labelId="genre-label"
             id="genre-select"
-            defaultValue=""
             value={props.genreFilter}
             onChange={handleGenreChange}
           >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
+            {genres.map((genre) => (
+              <MenuItem key={genre.id} value={genre.id}>
+                {genre.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </CardContent>
+
       <CardMedia
         sx={{ height: 300 }}
         image={img}
         title="Filter"
       />
+
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
+          <SearchIcon
+            fontSize="large"
+            sx={{ color: "#D98EAA" }}
+          />
           Filter the movies.
-          <br />
         </Typography>
       </CardContent>
     </Card>
